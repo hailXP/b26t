@@ -74,16 +74,11 @@
     <textarea readonly rows="2">const x = Date.now().toString(26).split('').map(c => parseInt(c, 26)).filter(v=>v<26).map(v => String.fromCharCode(v + 97)).join('')</textarea>
 
     <script>
-        let lastOutput = "";
-
         function updateOutput() {
             const x = Date.now().toString(26).split('').map(c => parseInt(c, 26)).filter(v=>v<26).map(v => String.fromCharCode(v + 97)).join('');
             const outputElement = document.getElementById('output').querySelector('span');
 
-            if (x !== lastOutput) {
-                outputElement.textContent = x;
-                lastOutput = x;
-            }
+            outputElement.textContent = x;
         }
 
         function copyToClipboard() {
@@ -97,7 +92,7 @@
             });
         }
 
-        setInterval(updateOutput, 50);
+        setInterval(updateOutput, 100);
 
         document.querySelectorAll('textarea').forEach(textarea => {
             textarea.addEventListener('click', () => {
